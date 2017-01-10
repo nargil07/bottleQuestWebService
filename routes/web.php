@@ -11,6 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::post('/{idUtilisateur}/message', ["uses"=>"MessageController@newMessage"]);
+Route::get('/{idUtilisateur}/message', ["uses"=>"MessageController@getMessageOf"]);
+Route::get('/{idUtilisateur}/ownMessage', ["uses"=>"MessageController@getOwnedMessage"]);
+Route::get('/arrayMessage', function (){
+    $messages = [];
+
+    $message = new \RoadBottle\Message();
+    $message->message = "Voila un message";
+    $message->statut = \RoadBottle\Enum\EnumMessageStatut::POSSEDE;
+
 });
