@@ -22,15 +22,33 @@ use RoadBottle\Utilisateur;
  */
 class MetierUtilisateur
 {
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function getUtilisateurById($id){
         return Utilisateur::find($id);
     }
 
-    public function create($nom, $prenom, $login){
+    /**
+     * @param $email
+     * @return mixed
+     */
+    public function getUtilisateurByEmail($email){
+        return Utilisateur::where('email', '=', $email)->get()->first();
+    }
+
+    /**
+     * @param $nom
+     * @param $prenom
+     * @param $login
+     */
+    public function create($nom, $prenom, $mail, $picture){
         $utilisateur = new Utilisateur();
         $utilisateur->nom = $nom;
         $utilisateur->prenom = $prenom;
-        $utilisateur->login = $login;
+        $utilisateur->email = $mail;
+        $utilisateur->picture = $picture;
         $utilisateur->save();
     }
 }

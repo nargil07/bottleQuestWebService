@@ -17,7 +17,6 @@ namespace RoadBottle\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use RoadBottle\Metier\MetierMessage;
 use RoadBottle\Service\ServiceUtilisateur;
 
 class MessageController extends Controller
