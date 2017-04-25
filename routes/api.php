@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 Route::post ('/utilisateur',                            ["uses" => "UtilisateurController@register"]                );
-Route::post ('/{idUtilisateur}/messages',               ["uses" => "MessageController@newMessage"]                 );
-Route::get  ('/{idUtilisateur}/messages',               ["uses" => "MessageController@getMessagesFromUser"]        );
-Route::put  ('/{idUtilisateur}/messages/{idMessage}',   ["uses" => "MessageController@ramasserMessage"]            );
-Route::get  ('/{idUtilisateur}/messages/proche',        ["uses" => "MessageController@getMessagesFromLocalisation"]);
+Route::post ('/{idUtilisateur}/messages',               ["uses" => "MessageController@newMessage"]                  );
+Route::get  ('/{idUtilisateur}/messages',               ["uses" => "MessageController@getMessagesFromUser"]         );
+Route::put  ('/{idUtilisateur}/messages/{idMessage}',   ["uses" => "MessageController@ramasserMessage"]             );
+Route::get  ('/{idUtilisateur}/messages/proche',        ["uses" => "MessageController@getMessagesFromLocalisation"] );
