@@ -44,6 +44,7 @@ class MessageController extends Controller
     }
 
     public function getMessagesFromLocalisation($idUtilisateur){
-        return response()->json(Message::all());
+        $metierMessage = new MetierMessage();
+        return response()->json($metierMessage->getAll());
     }
 }
