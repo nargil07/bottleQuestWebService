@@ -17,11 +17,12 @@ namespace RoadBottle\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use RoadBottle\Message;
+use RoadBottle\Metier\MetierMessage;
 use RoadBottle\Service\ServiceUtilisateur;
 
 class MessageController extends Controller
 {
-
     public function newMessage($idUtilisateur, Request $request){
         try{
             $serviceUtilisateur = new ServiceUtilisateur($idUtilisateur);
@@ -40,5 +41,9 @@ class MessageController extends Controller
     public function getOwnedMessage($idUtilisateur){
         $serviceUtilisateur = new ServiceUtilisateur($idUtilisateur);
         return response()->json($serviceUtilisateur->getOwnMessages());
+    }
+
+    public function getMessagesFromLocalisation($idUtilisateur){
+        return response()->json(Message::all());
     }
 }
