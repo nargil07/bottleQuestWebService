@@ -41,14 +41,12 @@ class UtilisateurController extends Controller
     public function connexion(Request $request){
         if($request->has("email") && $request->has("password")){
             $metierUtilisateur = new MetierUtilisateur();
-            $personne = $metierUtilisateur->connexion($request->email, $request->motdepasse);
+            $personne = $metierUtilisateur->connexion($request->email, $request->password);
             if(is_null($personne)){
                 return response()->json(false);
             }else{
                 return response()->json($personne);
             }
-        }else{
-            return response()->json(false);
         }
     }
 }
