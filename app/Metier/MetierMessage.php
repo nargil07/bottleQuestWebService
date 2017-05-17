@@ -109,4 +109,9 @@ class MetierMessage
         $messageOwner->LocalisationDebut()->associate($localisation);
         $messageOwner->save();
     }
+
+    public function getAll(){
+        $messages = Message::where('statut', EnumMessageStatut::POSE)->get()->all();
+        return $messages;
+    }
 }
