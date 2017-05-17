@@ -111,7 +111,7 @@ class MetierMessage
     }
 
     public function getAll(){
-        $messages = Message::where('statut', EnumMessageStatut::POSE)->join('localisation','localisation.ID','message.localisation_id')->get()->all();
+        $messages = Message::where('statut', EnumMessageStatut::POSE)->join('localisations','localisations.ID','messages.localisation_id')->get()->all();
         return $messages;
     }
 }
