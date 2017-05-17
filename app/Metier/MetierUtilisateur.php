@@ -44,7 +44,7 @@ class MetierUtilisateur
      * @return mixed
      */
     public function connexion($email, $motdepasse){
-        $utilisateur = Utilisateur::where('email', $email)->where('motdepasse', $email)->get()->first();
+        $utilisateur = Utilisateur::where('email', $email)->where('motdepasse', $motdepasse)->get()->first();
         return $utilisateur;
     }
 
