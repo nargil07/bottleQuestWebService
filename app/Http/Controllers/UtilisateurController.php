@@ -8,6 +8,10 @@ use RoadBottle\Utilisateur;
 
 class UtilisateurController extends Controller
 {
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function register(Request $request)
     {
         if($request->attributes->has('payload')){
@@ -28,5 +32,21 @@ class UtilisateurController extends Controller
         }
 
         return response()->json(false);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function connexion(Request $request){
+        if($request->has("email") && $request->has("password")){
+            $metierUtilisateur = new MetierUtilisateur();
+            $personne = $metierUtilisateur->connexion($request->email, $request->motdepasse);
+            if(is_null($personne)){
+                return response()->json(false);
+            }else{
+                return response()->json($personne);
+            }
+        }
     }
 }

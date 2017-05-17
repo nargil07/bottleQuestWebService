@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::post ('/connexion',                              ["uses" => "UtilisateurController@connexion"]               );
 Route::post ('/utilisateur',                            ["uses" => "UtilisateurController@register"]                );
 Route::post ('/{idUtilisateur}/messages',               ["uses" => "MessageController@newMessage"]                  );
 Route::get  ('/{idUtilisateur}/messages',               ["uses" => "MessageController@getMessageOf"]                );

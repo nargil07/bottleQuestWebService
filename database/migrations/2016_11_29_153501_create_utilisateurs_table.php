@@ -17,6 +17,7 @@ class CreateUtilisateursTable extends Migration
             $table->increments('id');
             $table->string('nom');
             $table->string('prenom');
+            $table->string('motdepasse');
             $table->string('email')->unique();
             $table->string('picture');
             $table->timestamps();

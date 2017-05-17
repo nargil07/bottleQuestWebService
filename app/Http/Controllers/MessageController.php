@@ -30,7 +30,6 @@ class MessageController extends Controller
             return response()->json(["erreur" => $e->getMessage()]);
         }
         return response()->json(true);
-
     }
 
     public function getMessageOf($idUtilisateur){

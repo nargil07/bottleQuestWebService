@@ -39,6 +39,16 @@ class MetierUtilisateur
     }
 
     /**
+     * @param $email
+     * @param $motdepasse
+     * @return mixed
+     */
+    public function connexion($email, $motdepasse){
+        $utilisateur = Utilisateur::where('email', $email)->where('motdepasse', $email)->get()->first();
+        return $utilisateur;
+    }
+
+    /**
      * @param $nom
      * @param $prenom
      * @param $login
