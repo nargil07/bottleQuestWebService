@@ -14,6 +14,11 @@ class UtilisateurController extends Controller
      */
     public function register(Request $request)
     {
+        /**
+         * @var $personne Utilisateur
+         * @var $reponse array
+         */
+        $reponse = [];
         if($request->attributes->has('payload')){
             $payload = $request->attributes->get('payload');
             if(!is_null($payload)){
@@ -25,13 +30,18 @@ class UtilisateurController extends Controller
                     $personne->prenom = $payload['given_name'];
                     $personne->email = $payload['email'];
                     $personne->picture = $payload['picture'];
-                    return response()->json($personne->save());
+                    $reponse["OK"] = $personne->save();
+                    $reponse["idPersonne"] = $personne->id;
+                    return response()->json($reponse);
                 }
-                return response()->json(true);
+                $reponse["OK"] = true;
+                $reponse["idPersonne"] = $personne->id;
+                return response()->json($reponse);
             }
         }
-
-        return response()->json(false);
+        $reponse["OK"]      = false;
+        $reponse["message"] = "Google Auth erreur";
+        return response()->json($reponse);
     }
 
     /**
