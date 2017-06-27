@@ -35,7 +35,10 @@ class MessageController extends Controller
 
     public function getMessageOf($idUtilisateur){
         $serviceUtilisateur = new ServiceUtilisateur($idUtilisateur);
-        return response()->json($serviceUtilisateur->getCreatedMessages());
+        $reponse = [];
+        $reponse["Ok"] = true;
+        $reponse["result"] = $serviceUtilisateur->getCreatedMessages();
+        return response()->json($reponse);
     }
 
     public function getOwnedMessage($idUtilisateur){
