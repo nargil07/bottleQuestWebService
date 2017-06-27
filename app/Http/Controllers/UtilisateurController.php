@@ -53,9 +53,13 @@ class UtilisateurController extends Controller
             $metierUtilisateur = new MetierUtilisateur();
             $personne = $metierUtilisateur->connexion($request->email, $request->password);
             if(is_null($personne)){
-                return response()->json(false);
+                $reponse["OK"]      = false;
+                $reponse["message"] = "Votre mot de passe ou identifiant est faux";
+                return response()->json($reponse);
             }else{
-                return response()->json($personne);
+                $reponse["OK"]      = true;
+                $reponse["idUtilisateur"] = "Votre mot de passe ou identifiant est faux";
+                return response()->json($reponse);
             }
         }
     }
